@@ -1,25 +1,24 @@
 #include <stdio.h>
-#define MAXLINE 1000  /* max length of input line */
+#define MAXLINE 1000
 
 int get_line(char line[], int maxline);
 void copy(char to[], char from[]);
 
 int main()
 {
-  int len;  /* length of current line */
-  int max;  /* max length */
-  char line[MAXLINE];  /* current line */
-  char longest[MAXLINE];  /* line that has max length */
+  int len;
+  long total;
+  char line[MAXLINE];
 
-  max = 0;
+  total = 0;
   while ((len = get_line(line, MAXLINE)) > 0)
-    if (len > max) {
-      max = len;
-      copy(longest, line);
+    if (len > 0) {
+      total = total + len;
+      printf("%s", line);
     }
-  if (max > 0)
-    printf("%s", longest);
-  
+  if (total > 0)
+    printf("\ntotal length: %ld\n", total);
+
   return 0;
 }
 
@@ -34,7 +33,7 @@ int get_line(char s[], int lim)
     ++i;
   }
   s[i] = '\0';
-  
+
   return i;
 }
 
